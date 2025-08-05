@@ -50,11 +50,7 @@ export class WelcomePage extends BasePage {
 
   async turnOffTelemetry(): Promise<void> {
     return test.step('Turn off Telemetry', async () => {
-      const isUpdateTest = test.info().tags.includes('@update-install');
-
-      if (!isUpdateTest) {
-        await playExpect(this.startOnboarding).toBeEnabled({ timeout: 20_000 });
-      }
+      await playExpect(this.startOnboarding).toBeEnabled({ timeout: 20_000 });
 
       if (await this.telemetryConsent.isChecked()) {
         await playExpect(this.telemetryConsent).toBeChecked();
