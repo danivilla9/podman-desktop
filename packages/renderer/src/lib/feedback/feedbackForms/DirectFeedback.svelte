@@ -101,7 +101,7 @@ async function openGitHub(): Promise<void> {
           <Icon
             size="1.5x"
             class="cursor-pointer {smileyRating === rating
-              ? 'text-(--pd-action-button-primary-text)'
+              ? 'text-(--pd-button-icon-primary-text)'
               : 'text-(--pd-button-disabled-text)'}"
             {icon} />
         </button>
@@ -151,6 +151,7 @@ async function openGitHub(): Promise<void> {
     {/if}
   </svelte:fragment>
   <svelte:fragment slot="buttons">
+    <Button class="underline" type="link" aria-label="Cancel" on:click={(): void => onCloseForm(true)}>Cancel</Button>
     <Button disabled={smileyRating === 0 || (smileyRating === 1 && !hasFeedback)} on:click={sendFeedback}
     >Send feedback</Button>
   </svelte:fragment>
